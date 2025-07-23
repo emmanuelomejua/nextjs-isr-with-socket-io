@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from 'next/image'
+import ImageComp from "@/util/ImageKit";
 
 const menuList = [
   {
@@ -92,10 +93,10 @@ const LeftBar = () => {
       <div className="flex items-center justify-between mt-4">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 relative rounded-full overflow-hidden">
-             <Image  src="/general/avatar.png" alt="lama dev" fill={true} />
+             <ImageComp  src="default-image.jpg" alt="Omejua" w={40} h={40} tr={true} />
           </div>
           <div className="hidden xxl:flex flex-col">
-            <span className="font-bold">Frontend Dev</span>
+            <span className="font-bold">Ifeanyi Omejua</span>
             <span className="text-sm text-textGray">@omejua</span>
           </div>
         </div>

@@ -1,9 +1,12 @@
-import Image from "next/image";
+import ImageComp from "@/util/ImageKit";
 
-export default function Home() {
+
+const Home = () => {
   return (
-    <div className="">
-Shit
+    <div className="h-full">
+        {/* <ImageComp/> */}
     </div>
   );
 }
+
+export default Home;
