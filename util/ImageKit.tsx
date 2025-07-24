@@ -11,11 +11,13 @@ type Itype = {
     tr?: boolean
 }
 
+const urlEndPoint = process.env.urlEndPoint
+
 export default function ImageComp ({src, w, h, alt, className, loading='lazy', tr}: Itype) {
   return (
     <div className="">
         <Image
-          urlEndpoint="https://ik.imagekit.io/fa2fz8zmy/"
+          urlEndpoint={urlEndPoint}
           src={src}
           width={w}
           height={h}

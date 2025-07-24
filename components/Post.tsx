@@ -1,0 +1,45 @@
+import ImageComp from '@/util/ImageKit';
+import React from 'react'
+import PostInfo from './PostInfo';
+import Image from 'next/image';
+
+const Post = () => {
+
+  return (
+    <div className='p-4 border-y-[1px] border-[#2f3336]'>
+        <div className="flex items-center gap-2 text-sm text-[#71767b] mb-2 font-bold">
+            <span className="">
+                Emmanuel Omejua reposted
+            </span>
+        </div>
+
+
+        <div className="flex gap-4">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                <Image src='/general/alan.svg' alt='' fill={true} />
+            </div>
+
+            <div className="flex-1 flex flex-col gap-2">
+                <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
+                        <h1 className='text-md font-bold'>Emmanuel Omejua</h1>
+                        <span className="text-[#71787b] text-sm">@omejua</span>
+                        <span className="text-[#71787b] text-sm">29 mins ago</span>
+                    </div>
+                    <PostInfo/>
+                </div>
+
+                <p className='text-[12px]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum,
+              animi. Laborum commodi aliquam alias molestias odio, ab in,
+              reprehenderit excepturi temporibus, ducimus necessitatibus fugiat
+              iure nam voluptas soluta pariatur inventore.</p>
+
+              <Image src='/general/post.jpeg' alt='' width={600} height={500} />
+
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Post;
