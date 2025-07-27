@@ -11,7 +11,7 @@ type Itype = {
     tr?: boolean
 }
 
-const urlEndPoint = process.env.urlEndPoint
+const urlEndPoint = process.env.IMAGEKIT_urlEndPoint
 
 export default function ImageComp ({src, w, h, alt, className, loading='lazy', tr}: Itype) {
   return (

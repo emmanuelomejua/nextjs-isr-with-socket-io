@@ -4,12 +4,18 @@
 import React, { ChangeEvent, useState } from 'react';
 import Image from 'next/image';
 import { shareAction } from '@/actions';
+import ImageEditor from './ImageEditor';
 
 
 
 const Share = () => {
 
     const [media, setMedia] = useState<File | null>(null);
+    const [isEditorOpen, setIsEditorOpen] = useState(false);
+    const [settings, setSettings] = useState<{type: 'original' | 'square' | 'wide', sensitive: boolean}>({
+      type: 'original',
+      sensitive: false
+    })
 
 
     const handleMediaUpload = (e: ChangeEvent <HTMLInputElement>) => {
@@ -18,6 +24,7 @@ const Share = () => {
         }
     }
 
+    const previewURL = media ? URL.createObjectURL(media) : null;
 
   return (
     <form className='p-4 flex gap-4' action={shareAction}> 
@@ -33,6 +40,19 @@ const Share = () => {
             placeholder="What is happening?!"
             className="bg-transparent outline-none placeholder:text-textGray text-xl"
           />
+
+          {
+            previewURL &&
+            <div className="relative rounded-xl overflow-hidden">
+              <Image src={previewURL} alt='' width={600} height={400}/>
+
+              <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer" onClick={() => setIsEditorOpen(true)}>Edit</div>
+             </div>
+          }
+
+          {
+            previewURL && isEditorOpen && (<ImageEditor previewURL={previewURL} onClose={() => setIsEditorOpen(false)} settings={settings} setSettings={setSettings}/>)
+          }
 
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="flex gap-4 flex-wrap">
@@ -77,7 +97,7 @@ const Share = () => {
               className="cursor-pointer"
             />
             </div>
-            <button className="bg-white text-black font-bold rounded-full py-2 px-4">Post</button>
+            <button type='submit' className="bg-white text-black font-bold rounded-full py-2 px-4">Post</button>
           </div>
 
         </div>
