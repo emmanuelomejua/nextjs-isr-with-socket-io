@@ -29,7 +29,7 @@ const Share = () => {
   return (
     <form className='p-4 flex gap-4' action={shareAction}> 
 
-        <div className="relative w-10 h-10 rounded-b-full overflow-hidden">
+        <div className="relative w-10 h-10 rounded-b-full overflow-y-scroll">
             <Image src='/general/alan.svg' fill={true} alt='' />
         </div>
 
@@ -43,16 +43,19 @@ const Share = () => {
 
           {
             previewURL &&
-            <div className="relative rounded-xl overflow-hidden">
+            <div className="relative rounded-xl overflow-hidden ">
               <Image src={previewURL} alt='' width={600} height={400}/>
 
-              <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer" onClick={() => setIsEditorOpen(true)}>Edit</div>
+              <div className="absolute top-2 left-2 bg-black opacity-50 text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer" onClick={() => setIsEditorOpen(true)}>Edit</div>
              </div>
           }
 
-          {
-            previewURL && isEditorOpen && (<ImageEditor previewURL={previewURL} onClose={() => setIsEditorOpen(false)} settings={settings} setSettings={setSettings}/>)
-          }
+          <div className="">
+            {
+              previewURL && isEditorOpen && (<ImageEditor previewURL={previewURL} onClose={() => setIsEditorOpen(false)} settings={settings} setSettings={setSettings}/>)
+            }
+          </div>
+
 
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="flex gap-4 flex-wrap">
