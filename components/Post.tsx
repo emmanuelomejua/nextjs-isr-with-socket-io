@@ -4,6 +4,17 @@ import PostInfo from './PostInfo';
 import Image from 'next/image';
 import PostInteraction from './PostInteraction';
 
+
+
+interface FileDetailsResponse {
+  width: number;
+  height: number;
+  filePath: string;
+  url: string;
+  fileType: string;
+  customMetadata?: { sensitive: boolean };
+}
+
 const Post = () => {
 
   return (

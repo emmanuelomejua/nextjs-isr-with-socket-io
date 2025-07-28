@@ -7,6 +7,9 @@ import { shareAction } from '@/actions';
 import ImageEditor from './ImageEditor';
 
 
+const icons = ['icons/poll.svg', 'icons/emoji.svg', 'icons/schedule.svg', 'icons/location.svg']
+
+
 
 const Share = () => {
 
@@ -27,9 +30,9 @@ const Share = () => {
     const previewURL = media ? URL.createObjectURL(media) : null;
 
   return (
-    <form className='p-4 flex gap-4' action={shareAction}> 
+    <form className='p-4 flex gap-4' action={(formData) => shareAction(formData, settings)}> 
 
-        <div className="relative w-10 h-10 rounded-b-full overflow-y-scroll">
+        <div className="relative w-10 h-10 rounded-b-full overflow-hidden">
             <Image src='/general/alan.svg' fill={true} alt='' />
         </div>
 
@@ -39,15 +42,43 @@ const Share = () => {
             name="desc"
             placeholder="What is happening?!"
             className="bg-transparent outline-none placeholder:text-textGray text-xl"
+            accept='image/*, videos/*'
           />
 
           {
-            previewURL &&
+           media?.type.includes('image') && previewURL &&
             <div className="relative rounded-xl overflow-hidden ">
-              <Image src={previewURL} alt='' width={600} height={400}/>
+              <Image src={previewURL} alt='' 
+                width={400} 
+                height={370} 
+                className={`w-full ${
+                    settings.type === "original"
+                        ? "h-full object-contain"
+                        : settings.type === "square"
+                        ? "aspect-square object-cover"
+                        : "aspect-video object-cover"
+                    }`}/>
 
               <div className="absolute top-2 left-2 bg-black opacity-50 text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer" onClick={() => setIsEditorOpen(true)}>Edit</div>
+
+              <div
+                className="absolute top-2 right-2 bg-black opacity-50 text-white h-8 w-8 flex items-center justify-center rounded-full cursor-pointer font-bold text-sm"
+                onClick={() => setMedia(null)}>
+                X
+              </div>
              </div>
+          }
+
+          {
+            media?.type.includes('video') && previewURL && 
+            <div className="relative">
+              <video src={previewURL} controls />
+              <div
+                className="absolute top-2 right-2 bg-black opacity-50 text-white h-8 w-8 flex items-center justify-center rounded-full cursor-pointer font-bold text-sm"
+                onClick={() => setMedia(null)}>
+                X
+              </div>
+            </div>
           }
 
           <div className="">
@@ -71,34 +102,18 @@ const Share = () => {
               />
             </label>
 
-            <Image
-              src="icons/poll.svg"
-              alt=""
-              width={20}
-              height={20}
-              className="cursor-pointer"
-            />
-            <Image
-              src="icons/emoji.svg"
-              alt=""
-              width={20}
-              height={20}
-              className="cursor-pointer"
-            />
-            <Image
-              src="icons/schedule.svg"
-              alt=""
-              width={20}
-              height={20}
-              className="cursor-pointer"
-            />
-            <Image
-              src="icons/location.svg"
-              alt=""
-              width={20}
-              height={20}
-              className="cursor-pointer"
-            />
+            {
+              icons.map((icon, index) => (
+                <Image
+                  key={index}
+                  src={icon}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="cursor-pointer"
+                />
+              ))
+            }
             </div>
             <button type='submit' className="bg-white text-black font-bold rounded-full py-2 px-4">Post</button>
           </div>
