@@ -11,7 +11,7 @@ const menuList = [
   },
   {
     id: 2,
-    name: "Jobs",
+    name: "Explore",
     link: "/jobs",
     icon: "explore.svg",
   },
@@ -36,7 +36,7 @@ const menuList = [
   {
     id: 6,
     name: "Jobs",
-    link: "/",
+    link: "/jobs",
     icon: "job.svg",
   },
   {

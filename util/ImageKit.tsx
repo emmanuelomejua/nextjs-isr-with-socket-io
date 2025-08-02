@@ -26,6 +26,8 @@ export default function ImageComp ({src, w, h, alt, className, loading='lazy', t
         ? { transformation: [{ width: `${w}`, height: `${h}` }] }
         : { width: w, height: h })}
           loading={loading}
+          quality={80}
+          // lqip={{ active: true, quality: 20 }}
           className={className}
         />
     </div>

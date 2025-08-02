@@ -1,5 +1,5 @@
 import Feed from "@/components/Feed";
-import Share from "@/components/Share";
+import Share from "@/modules/Share";
 import Link from "next/link";
 
 
