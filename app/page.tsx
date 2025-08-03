@@ -1,4 +1,4 @@
-import Feed from "@/components/Feed";
+import Feed from "@/sections/Feed";
 import Share from "@/modules/Share";
 import Link from "next/link";
 

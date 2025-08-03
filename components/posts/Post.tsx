@@ -20,20 +20,20 @@ interface FileDetailsResponse {
 const Post = async () => {
 
 
-    const getFileDetails = async (
-    fileId: string
-  ): Promise<FileDetailsResponse> => {
-    return new Promise((resolve, reject) => {
-      imagekit.getFileDetails(fileId, function (error, result) {
-        if (error) reject(error);
-        else resolve(result as FileDetailsResponse);
-      });
-    });
-  };
+  //   const getFileDetails = async (
+  //   fileId: string
+  // ): Promise<FileDetailsResponse> => {
+  //   return new Promise((resolve, reject) => {
+  //     imagekit.getFileDetails(fileId, function (error, result) {
+  //       if (error) reject(error);
+  //       else resolve(result as FileDetailsResponse);
+  //     });
+  //   });
+  // };
 
-  const fileDetails = await getFileDetails('688e53515c7cd75eb8caa5d5');
+  // const fileDetails = await getFileDetails('688e53515c7cd75eb8caa5d5');
 
-  console.log(fileDetails)
+  // console.log(fileDetails)
 
 
   return (
