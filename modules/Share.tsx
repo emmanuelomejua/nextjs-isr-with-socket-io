@@ -7,7 +7,7 @@ import { shareAction } from '@/actions';
 import ImageEditor from './ImageEditor';
 
 
-const icons = ['icons/poll.svg', 'icons/emoji.svg', 'icons/schedule.svg', 'icons/location.svg']
+const icons = ['/icons/poll.svg', '/icons/emoji.svg', '/icons/schedule.svg', '/icons/location.svg']
 
 
 
@@ -94,7 +94,7 @@ const Share = () => {
 
             <label htmlFor='file'>
               <Image
-                src="icons/gif.svg"
+                src="/icons/gif.svg"
                 alt=""
                 width={20}
                 height={20}

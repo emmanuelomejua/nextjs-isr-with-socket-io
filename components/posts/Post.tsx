@@ -17,7 +17,7 @@ interface FileDetailsResponse {
   customMetadata?: { sensitive: boolean };
 }
 
-const Post = async () => {
+const Post = async ({type}: {type?: 'status' | 'comment'}) => {
 
 
   //   const getFileDetails = async (
@@ -56,8 +56,8 @@ const Post = async () => {
         </div>
 
 
-        <div className="flex gap-4">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden">
+        <div className={`flex gap-4 ${type === "status" && "flex-col"}`}>
+            <div className={`${type === "status" && "hidden" } relative w-10 h-10 rounded-full overflow-hidden`}>
                 <Image src='/general/alan.svg' alt='' fill={true} />
             </div>
 
