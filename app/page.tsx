@@ -4,7 +4,8 @@ import Link from "next/link";
 
 
 
-const Home = () => {
+const Home = async () => {
+
   return (
     <div className="h-full">
       <div className="px-4 pt-4 flex justify-between text-[#71767b] font-bold border-b-[1px] border-[#2f3336]">
