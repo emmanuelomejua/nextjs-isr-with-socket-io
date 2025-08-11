@@ -1,6 +1,17 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware()
+const isProtectedRoute = createRouteMatcher("/");
+
+export default clerkMiddleware(
+  async (auth, req) => {
+    if (isProtectedRoute(req)) await auth.protect();
+  },
+  {
+    signInUrl: "/sign-in",
+    signUpUrl: "/sign-up",
+  }
+);
+
 
 export const config = {
   matcher: [
